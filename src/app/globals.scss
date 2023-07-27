@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Color Variables 
+$white-color: #FFF;
+$black-color: #000;
+$nav-background-color: #000;
+$background-color: #f0f1f6;
+
+body {
+  background-color: $background-color;
+  color: $black-color;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+// Navbar 
+.navbar {
+  background-color: $nav-background-color;
+
+  nav {
+    h1 {
+      color: $white-color;
+    }
+
+    ul {
+      li {
+        color: $white-color;
+
+        .active-nav {
+          background-color: $white-color;
+          color: $black-color;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}
+
+// FilterBar
+.filterbar {
+  padding: 20px 0;
+  border-bottom: 1px solid #000;
+
+  form {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    select {
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 5px 8px;
+      background-color: black;
+      color: white;
+      border-radius: 8px;
+    }
+  }
+}
+
+// SearchBar
+.searchbar {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+
+  form {
+    input {
+      width: 600px;
+      padding: 8px;
+      color: #000;
+      border-radius: 8px;
+    }
+  }
+}
+
+// Contant
+.contant {
+  display: flex;
+  justify-content: space-between;
+
+  .tabpan {
+    padding: 10px 0;
+    width: 700px;
+
+    ul {
+      width: 400px;
+      border-radius: 50px;
+      border: 1px solid #000;
+      flex-grow: 2;
+      margin: 0 auto;
+      
+      li {
+        padding: 8px;
+        width: 50%;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &.active {
+          background-color: black;
+          color: white;
+          border-radius: 50px;
+        }
+      }
+    }
+
+    .questions {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      gap: 20px;
+
+      .accordion-item {
+        .accordion-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: white;
+          padding: 8px;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+        
+        .accordion-content {
+          background-color: white;
+          padding: 8px;
+          border-radius: 8px;
+          margin-top: 4px;
+        }
+      }
+
+      button {
+        padding: 5px 8px;
+        background-color: #000;
+        color: white;
+        border-radius: 8px;
+      }
+    }
+  }
+  
+}
