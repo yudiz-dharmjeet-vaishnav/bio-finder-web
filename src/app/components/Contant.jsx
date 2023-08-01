@@ -2,11 +2,13 @@
 
 import React, {useState} from 'react'
 import Accordian from './Accordian'
+import { useTheme } from 'next-themes'
 
 function Contant() {
   const [activeTab, setActiveTab] = useState(1)
+  const { theme } = useTheme()
 
-  const items = [
+  const questions = [
     {
        title: "Question 1",
        content: 
@@ -100,19 +102,19 @@ function Contant() {
       </div>
 
       <div className='tabpan'>
-        <ul className='flex mb-5'>
-          <li className={activeTab === 1 ? 'active' : ''} onClick={() => setActiveTab(1)}>Questions</li>
-          <li className={activeTab === 2 ? 'active' : ''} onClick={() => setActiveTab(2)}>Bios</li>
+        <ul className='flex mb-5 border-black dark:border-white'>
+          <li className={activeTab === 1 ? `${theme === 'dark' ? 'active-dark' : 'active'}` : ''} onClick={() => setActiveTab(1)}>Questions</li>
+          <li className={activeTab === 2 ? `${theme === 'dark' ? 'active-dark' : 'active'}` : ''} onClick={() => setActiveTab(2)}>Bios</li>
         </ul>
 
         {activeTab === 1 && (
           <div className='questions'>
-            {items?.map((item, index) => 
+            {questions?.map((item, index) => 
               (
                 <Accordian key={index} item={item} />
               )
             )}
-            <button>View More</button>
+            <button className='bg-black text-white dark:bg-white dark:text-black'>View More</button>
           </div>
         )}
 

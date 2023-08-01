@@ -5,7 +5,6 @@
 // Color Variables 
 $white-color: #FFF;
 $black-color: #000;
-$nav-background-color: #000;
 $background-color: #f0f1f6;
 
 body {
@@ -20,8 +19,6 @@ body {
 
 // Navbar 
 .navbar {
-  background-color: $nav-background-color;
-
   nav {
     h1 {
       color: $white-color;
@@ -36,6 +33,12 @@ body {
           color: $black-color;
           border-radius: 10px;
         }
+
+        .active-nav-dark {
+          background-color: $black-color;
+          color: $white-color;
+          border-radius: 10px;
+        }
       }
     }
   }
@@ -44,7 +47,7 @@ body {
 // FilterBar
 .filterbar {
   padding: 20px 0;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid;
 
   form {
     display: flex;
@@ -59,8 +62,6 @@ body {
 
     button {
       padding: 5px 8px;
-      background-color: black;
-      color: white;
       border-radius: 8px;
     }
   }
@@ -94,7 +95,7 @@ body {
     ul {
       width: 400px;
       border-radius: 50px;
-      border: 1px solid #000;
+      border: 1px solid;
       flex-grow: 2;
       margin: 0 auto;
       
@@ -108,6 +109,12 @@ body {
         &.active {
           background-color: black;
           color: white;
+          border-radius: 50px;
+        }
+
+        &.active-dark {
+          background-color: white;
+          color: black;
           border-radius: 50px;
         }
       }
@@ -124,14 +131,12 @@ body {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          background-color: white;
           padding: 8px;
           border-radius: 8px;
           cursor: pointer;
         }
         
         .accordion-content {
-          background-color: white;
           padding: 8px;
           border-radius: 8px;
           margin-top: 4px;
@@ -140,8 +145,6 @@ body {
 
       button {
         padding: 5px 8px;
-        background-color: #000;
-        color: white;
         border-radius: 8px;
       }
     }
