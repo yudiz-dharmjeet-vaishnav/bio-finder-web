@@ -4,9 +4,10 @@ import Link from 'next/link'
 import React from 'react'
 import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes'
+import Image from 'next/image';
+
 import Moon from '../../../public/images/moon.png'
 import Sun from '../../../public/images/sun.png'
-import Image from 'next/image';
 
 function Navbar() {
   const router = useRouter()
@@ -16,9 +17,9 @@ function Navbar() {
 
   function toggleTheme () {
     if (theme === 'dark') {
-      return 'light'
+      setTheme('light')
     } else {
-      return 'dark'
+      setTheme('dark')
     }
   }
 
@@ -34,7 +35,7 @@ function Navbar() {
             <li className='text-white dark:text-black'>
               <Link href="/about" className={currentRoute === '/about' ? `${theme === 'dark' ? 'active-nav-dark' : 'active-nav'} p-2` : 'p-2'}>About</Link>
             </li>
-            <li className='text-white dark:text-black' onClick={() => setTheme(toggleTheme)}>
+            <li className='text-white dark:text-black' onClick={() => toggleTheme()}>
               {
                 theme === 'dark' 
                   ? <Image src={Sun} width={24} alt='Sun' />

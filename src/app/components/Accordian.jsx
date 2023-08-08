@@ -11,9 +11,8 @@ function Accordian({item}) {
           onClick={() => setIsActive(!isActive)}
         >
           <h1>{item?.title}</h1>
-          <div>{isActive ? '-' : '+'}</div>
         </div>
-        {isActive && <div className="accordion-content bg-white dark:bg-black">{item?.content}</div>}
+        <div className="accordion-content bg-white dark:bg-black">{item?.content}</div>
       </div>
     </div>
   )
