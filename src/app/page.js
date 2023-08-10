@@ -1,10 +1,13 @@
 "use client"
 
-import FilterBar from "./components/FilterBar";
-import SearchBar from "./components/SearchBar";
-import Contant from "./components/Contant";
-
 import React from "react";
+import Script from 'next/script'
+
+import FilterBar from "@/app/components/Home/FilterBar";
+import SearchBar from "@/app/components/Home/SearchBar";
+import Contant from "@/app/components/Home/Contant";
+
+import ThemeScript from '@/app/themeScript'
 
 export default function Home() {
   return (
@@ -14,6 +17,8 @@ export default function Home() {
         <SearchBar />
         <Contant />
       </div>
+      <Script src={ThemeScript} />
+
     </div>
   )
 }

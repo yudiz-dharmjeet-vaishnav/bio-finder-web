@@ -126,27 +126,33 @@ body {
       margin-top: 20px;
       gap: 20px;
 
-      .accordion-item {
-        .accordion-title {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 8px;
-          border-radius: 8px;
-        }
-        
-        .accordion-content {
-          padding: 8px;
-          border-radius: 8px;
-          margin-top: 4px;
-        }
-      }
-
+      
       button {
         padding: 5px 8px;
         border-radius: 8px;
       }
     }
   }
+}
+
+// Question
+.question-item {
+  .question-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 8px;
+  }
   
+  .question-content {
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 4px;
+  }
+}
+
+// Single-Question
+.single-question {
+  margin: 20px 0;
 }

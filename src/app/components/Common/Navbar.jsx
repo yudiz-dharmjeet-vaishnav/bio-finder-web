@@ -1,25 +1,26 @@
 "use client"
 
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation';
-import { useTheme } from 'next-themes'
 import Image from 'next/image';
 
-import Moon from '../../../public/images/moon.png'
-import Sun from '../../../public/images/sun.png'
+import Moon from '../../../../public/images/moon.png'
+import Sun from '../../../../public/images/sun.png'
 
 function Navbar() {
   const router = useRouter()
   const currentRoute = usePathname()
 
-  const { theme, setTheme } = useTheme()
+  const [theme, setTheme] = useState()
 
   function toggleTheme () {
     if (theme === 'dark') {
       setTheme('light')
+      localStorage.setItem('bf-theme', 'light')
     } else {
       setTheme('dark')
+      localStorage.setItem('bf-theme', 'dark')
     }
   }
 
