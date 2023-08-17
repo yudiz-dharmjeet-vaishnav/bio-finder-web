@@ -1,14 +1,12 @@
-"use client"
-
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-import Moon from '../../../../public/images/moon.png'
-import Sun from '../../../../public/images/sun.png'
+import Moon from '@/src/assets/images/moon.png'
+import Sun from '@/src/assets/images/sun.png'
 
-function Navbar() {
+export default function Navbar() {
   const router = useRouter()
   const currentRoute = usePathname()
 
@@ -18,9 +16,11 @@ function Navbar() {
     if (theme === 'dark') {
       setTheme('light')
       localStorage.setItem('bf-theme', 'light')
+      document.body.setAttribute('data-mode', 'light')
     } else {
       setTheme('dark')
       localStorage.setItem('bf-theme', 'dark')
+      document.body.setAttribute('data-mode', 'dark')
     }
   }
 
@@ -49,5 +49,3 @@ function Navbar() {
     </div>
   )
 }
-
-export default Navbar

@@ -1,9 +1,7 @@
-"use client"
-
 import { useParams } from "next/navigation";
 import React from "react";
 
-import Question from "@/app/components/Common/Question";
+import Question from "@/src/shared/components/Common/Question";
 
 export default function Home() {
   const params = useParams()

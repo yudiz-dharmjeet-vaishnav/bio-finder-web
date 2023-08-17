@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SearchBar() {
+export default function SearchBar() {
   return (
     <div className='searchbar'>
       <form>
@@ -9,5 +9,3 @@ function SearchBar() {
     </div>
   )
 }
-
-export default SearchBar

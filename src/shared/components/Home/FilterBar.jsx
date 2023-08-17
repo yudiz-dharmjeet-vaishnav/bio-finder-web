@@ -1,9 +1,7 @@
-'use client'
-
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-function FilterBar() {
+export default function FilterBar() {
   const router = useRouter()
 
   function goToExploreMorePage() {
@@ -38,5 +36,3 @@ function FilterBar() {
     </div>
   )
 }
-
-export default FilterBar

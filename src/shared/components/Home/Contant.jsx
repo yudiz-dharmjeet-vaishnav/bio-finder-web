@@ -1,10 +1,8 @@
-"use client"
-
 import React, {useState} from 'react'
 
-import Question from '@/app/components/Common/Question'
+import Question from '@/src/shared/components/Common/Question'
 
-function Contant() {
+export default function Contant() {
   const [activeTab, setActiveTab] = useState(1)
 
   const theme = 'light'
@@ -129,7 +127,7 @@ function Contant() {
                 <Question key={index} question={item} homePage={true} />
               )
             )}
-            <button className='bg-black text-white dark:bg-white dark:text-black'>View More</button>
+            <button className='bg-black text-white dark:bg-white dark:text-black' id='view-more-btn'>View More</button>
           </div>
         )}
 
@@ -146,5 +144,3 @@ function Contant() {
     </div>
   )
 }
-
-export default Contant
