@@ -36,13 +36,13 @@ export default function Navbar() {
             <li className='text-white dark:text-black'>
               <Link href="/about" className={currentRoute === '/about' ? `${theme === 'dark' ? 'active-nav-dark' : 'active-nav'} p-2` : 'p-2'}>About</Link>
             </li>
-            <li className='text-white dark:text-black' onClick={() => toggleTheme()}>
+            {/* <li className='text-white dark:text-black' onClick={() => toggleTheme()}>
               {
                 theme === 'dark' 
                   ? <Image src={Sun} width={24} alt='Sun' />
                   : <Image src={Moon} width={24} alt='Moon' />
               }
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

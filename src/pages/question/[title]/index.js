@@ -1,25 +1,15 @@
-import { useParams } from "next/navigation";
 import React from "react";
 
 import Question from "@/src/shared/components/Common/Question";
+import { useRouter } from "next/router";
 
 export default function Home() {
-  const params = useParams()
-
-  const item = {
-      question: "Question 1",
-      answers: [
-       { id: '1', text: 'Answer 1'},
-       { id: '2', text: 'Answer 2'},
-       { id: '3', text: 'Answer 3'},
-       { id: '4', text: 'Answer 4'}
-      ]
-  }
+  const router = useRouter()
 
   return (
     <div className="single-question">
       <div className="container">
-        <Question question={item} homePage={false} />
+        <Question question={JSON.parse(router.query.question)} homePage={false} />
       </div>
     </div>
   )
