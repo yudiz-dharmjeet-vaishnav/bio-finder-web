@@ -26,7 +26,6 @@ export default function Question({ question, homePage }) {
   }, [question, homePage])
 
   function goToSingleQuestionPage () {
-    console.log('question', question)
     router.push({
       pathname: `/question/${question?.question}`,
       query: {
