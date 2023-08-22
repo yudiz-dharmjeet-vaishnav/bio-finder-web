@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 
 import BlackNewTabImg from '@/src/assets/images/new-tab-black.png'
-import CopyIconBlack from '@/src/assets/images/copy-black-icon.png'
+// import CopyIconBlack from '@/src/assets/images/copy.svg'
 // import Tooltip from './Tooltip';
 
 export default function Question({ question, homePage }) {
@@ -22,11 +23,9 @@ export default function Question({ question, homePage }) {
   }, [question?.answers, homePage])
 
   function goToSingleQuestionPage (question) {
+    console.log('question', question)
     router.push({
-      pathname: `/question/${question?.question}`,
-      query: {
-        question: JSON.stringify(question)
-      }
+      pathname: `/question/${question?.question}`
     })
   }
 
@@ -34,7 +33,7 @@ export default function Question({ question, homePage }) {
     <div className="question">
       <div className="question-item">
         <div
-          className="question-title bg-white dark:bg-black"
+          className="question-title dark:bg-black"
         >
           <h1>{question?.question}</h1>
           {homePage &&
@@ -45,16 +44,21 @@ export default function Question({ question, homePage }) {
         </div>
         <div className="question-content bg-white dark:bg-black">
           {answers.map((answer, index) => (
-            <div key={index} className='flex justify-between items-center'>
+            <div key={index} className='answer flex justify-between items-center' onClick={() => {
+              navigator.clipboard.writeText(answer)
+              toast("Copied Successfully")
+            }}>
               <h2>{answer}</h2>
-              <div className='flex gap-2 my-2' style={{ width: '20px' }}>
-                {/* <butotn>
+              {/* <div className='flex gap-2 my-2' style={{ width: '20px' }}>
+                <butotn>
                   <Tooltip />
-                </butotn> */}
+                </butotn>
                 <button onClick={() => {
                   navigator.clipboard.writeText(answer)
-                }}><Image src={CopyIconBlack} alt='CopyIconBlack' width={16} /></button>
-              </div>
+                }}>
+                  <Image src={CopyIconBlack} alt='CopyIconBlack' width={16} />
+                </button>
+              </div> */}
             </div>
           ))}
         </div>

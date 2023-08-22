@@ -9,9 +9,9 @@ export default function Contant({questions}) {
 
   return (
     <div className='contant'>
-      <div className='left-sidebar'>
+      {/* <div className='left-sidebar'>
         <h1>Left Sidebar</h1>
-      </div>
+      </div> */}
 
       <div className='tabpan'>
         <ul className='flex mb-5 border-black dark:border-white'>
@@ -37,9 +37,9 @@ export default function Contant({questions}) {
         )}
       </div>
 
-      <div className='right-sidebar'>
+      {/* <div className='right-sidebar'>
         <h1>Right Sidebar</h1>
-      </div>
+      </div> */}
     </div>
   )
 }

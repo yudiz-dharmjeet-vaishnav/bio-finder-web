@@ -90,7 +90,7 @@ body {
 
   .tabpan {
     padding: 10px 0;
-    width: 700px;
+    width: 1200px;
 
     ul {
       width: 400px;
@@ -137,6 +137,7 @@ body {
 // Question
 .question-item {
   .question-title {
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -148,6 +149,28 @@ body {
     padding: 8px;
     border-radius: 8px;
     margin-top: 4px;
+
+    .answer {
+      padding: 4px;
+    }
+
+    .answer:hover {
+      background-color: black;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+
+      background-image: url('../images/copy-icon-white.png');
+      background-position: right;
+      background-repeat: no-repeat;
+      background-size: 20px;
+
+      button {
+        img {
+          color: white
+        }
+      }
+    }
   }
 }
 
