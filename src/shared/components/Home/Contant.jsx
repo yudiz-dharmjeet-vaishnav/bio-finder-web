@@ -46,24 +46,13 @@ export default function Contant({questions}) {
 
         {activeTab === 2 && (
           <div className='question-item'>
-            <div className="question-content bg-white dark:bg-black">
+            <div className="question-content dark:bg-black">
               {biosData?.ans?.map((bio, index) => (
-                <div key={index} className='answer flex justify-between items-center' onClick={() => {
+                <div key={index} className='answer flex justify-between items-center mb-2 bg-white p-3 rounded-lg' onClick={() => {
                   navigator.clipboard.writeText(bio?.aProfileFields?.sDisplayText)
                   toast("Copied Successfully")
                 }}>
                   <h2>{bio?.aProfileFields?.sDisplayText}</h2>
-                  <br />
-                  {/* <div className='flex gap-2 my-2' style={{ width: '20px' }}>
-                    <butotn>
-                      <Tooltip />
-                    </butotn>
-                    <button onClick={() => {
-                      navigator.clipboard.writeText(answer)
-                    }}>
-                      <Image src={CopyIconBlack} alt='CopyIconBlack' width={16} />
-                    </button>
-                  </div> */}
                 </div>
               ))}
             </div>
