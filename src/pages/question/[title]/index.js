@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Question from "@/src/shared/components/Common/Question";
 import { useRouter } from "next/router";
 
 export default function SingleQuestion() {
   const router = useRouter()
+  const [question, setQuestion] = useState()
 
-  console.log('router.query', router.query)
+  useEffect(() => {
+    if (router?.query?.id) { 
+      async function getSingleQuestionData () {
+        const response = await fetch(`https://bio-finder-app.vercel.app/api/useinfo?pageNumber=1&type=${router?.query?.id}`)
+        const json = await response.json()
+        setQuestion(json.data)
+      }
+      getSingleQuestionData()
+    }
+  }, [router?.query?.id])
 
   return (
     <div className="single-question">
       <div className="container">
-        <Question question={router?.query?.question} homePage={false} />
+        <Question question={question} homePage={false} />
       </div>
     </div>
   )

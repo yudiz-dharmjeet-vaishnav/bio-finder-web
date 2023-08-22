@@ -9,23 +9,29 @@ import BlackNewTabImg from '@/src/assets/images/new-tab-black.png'
 
 export default function Question({ question, homePage }) {
   const [answers, setAnswers] = useState([])
+  const [q, setQ] = useState('')
 
   const router = useRouter()
 
   useEffect(() => {
-    if (question?.answers) {
+    if (question) {
       if (homePage) {
+        setQ(question.question)
         setAnswers(question?.answers.slice(0, 5))
       } else {
-        setAnswers(question?.answers)
+        setQ(question.question.text)
+        setAnswers(question?.ans.map((a) => a.aProfileFields.sDisplayText))
       }
     }
-  }, [question?.answers, homePage])
+  }, [question, homePage])
 
-  function goToSingleQuestionPage (question) {
+  function goToSingleQuestionPage () {
     console.log('question', question)
     router.push({
-      pathname: `/question/${question?.question}`
+      pathname: `/question/${question?.question}`,
+      query: {
+        id: question.id
+      }
     })
   }
 
@@ -35,9 +41,9 @@ export default function Question({ question, homePage }) {
         <div
           className="question-title dark:bg-black"
         >
-          <h1>{question?.question}</h1>
+          <h1>{q}</h1>
           {homePage &&
-            <button onClick={() => goToSingleQuestionPage(question)}>
+            <button onClick={() => goToSingleQuestionPage()}>
               <Image src={BlackNewTabImg} width={20} alt='BlackNewTabImg' />
             </button>
           }
@@ -45,10 +51,10 @@ export default function Question({ question, homePage }) {
         <div className="question-content bg-white dark:bg-black">
           {answers.map((answer, index) => (
             <div key={index} className='answer flex justify-between items-center' onClick={() => {
-              navigator.clipboard.writeText(answer)
+              navigator.clipboard.writeText(answer || answer?.aProfileFields?.sDisplayText)
               toast("Copied Successfully")
             }}>
-              <h2>{answer}</h2>
+              <h2>{answer || answer?.aProfileFields?.sDisplayText}</h2>
               {/* <div className='flex gap-2 my-2' style={{ width: '20px' }}>
                 <butotn>
                   <Tooltip />

@@ -18,13 +18,15 @@ export default function Home() {
       json?.data?.questions.forEach((question) => {
         if (!obj[question?.categoryValue]) {
           obj[question?.categoryValue] = {
-            q: question?.text
+            q: question?.text,
+            id: question?.categoryValue
           }
         }
       })
 
       json?.data?.ans.forEach((answer) => {
         const objj = {
+          id: obj[answer._id]?.id,
           question: obj[answer._id]?.q,
           answers: answer.value
         }
