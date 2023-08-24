@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify';
 
 function SurpriseModal({ setSurprise }) {
 
@@ -14,6 +15,18 @@ function SurpriseModal({ setSurprise }) {
   
     getRandomDetails()
   }, [])
+
+  async function getRandomData () {
+    const response = await fetch('https://bio-finder-app.vercel.app/api/userinfo/random/details')
+    const data = await response.json()
+
+    setData(data?.data[0]?.aProfileFields)
+  }
+
+  function copyAns () {
+    navigator.clipboard.writeText(data?.sDisplayText)
+    toast("Copied Successfully")
+  }
 
   return (
     <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -38,10 +51,10 @@ function SurpriseModal({ setSurprise }) {
                 </div>
               </div>
             </div>
-            {/* <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-              <button type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Deactivate</button>
-              <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => setSurprise(false)}>Cancel</button>
-            </div> */}
+            <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              <button type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" onClick={() => getRandomData()}>Surprise</button>
+              <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => copyAns()}>Copy Answer</button>
+            </div>
           </div>
         </div>
       </div>
