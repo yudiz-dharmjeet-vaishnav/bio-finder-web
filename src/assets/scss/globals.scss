@@ -154,7 +154,29 @@ body {
       padding: 4px;
     }
 
+    .answer-bio {
+      padding: 10px;
+    }
+
     .answer:hover {
+      background-color: black;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+
+      background-image: url('../images/copy-icon-white.png');
+      background-position: right;
+      background-repeat: no-repeat;
+      background-size: 20px;
+
+      button {
+        img {
+          color: white
+        }
+      }
+    }
+
+    .answer-bio:hover {
       background-color: black;
       color: white;
       border-radius: 8px;

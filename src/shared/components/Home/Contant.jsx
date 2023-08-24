@@ -48,7 +48,7 @@ export default function Contant({questions}) {
           <div className='question-item'>
             <div className="question-content dark:bg-black">
               {biosData?.ans?.map((bio, index) => (
-                <div key={index} className='answer flex justify-between items-center mb-2 bg-white p-3 rounded-lg' onClick={() => {
+                <div key={index} className='answer-bio flex justify-between items-center mb-2 bg-white p-8 rounded-lg' onClick={() => {
                   navigator.clipboard.writeText(bio?.aProfileFields?.sDisplayText)
                   toast("Copied Successfully")
                 }}>
