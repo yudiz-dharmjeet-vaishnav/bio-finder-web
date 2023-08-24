@@ -5,12 +5,15 @@ import Image from 'next/image';
 
 import Moon from '@/src/assets/images/moon.png'
 import Sun from '@/src/assets/images/sun.png'
+import Surprise from '@/src/assets/images/surprise.png'
+import SurpriseModal from './SurpriseModal';
 
 export default function Navbar() {
   const router = useRouter()
   const currentRoute = usePathname()
 
   const [theme, setTheme] = useState()
+  const [surprise, setSurprise] = useState(false)
 
   function toggleTheme () {
     if (theme === 'dark') {
@@ -36,6 +39,9 @@ export default function Navbar() {
             <li className='text-white dark:text-black'>
               <Link href="/about" className={currentRoute === '/about' ? `${theme === 'dark' ? 'active-nav-dark' : 'active-nav'} p-2` : 'p-2'}>About</Link>
             </li>
+            <li className='cursor-pointer' onClick={() => setSurprise(true)}>
+              <Image src={Surprise} width={26} alt='surprise' />
+            </li>
             {/* <li className='text-white dark:text-black' onClick={() => toggleTheme()}>
               {
                 theme === 'dark' 
@@ -46,6 +52,8 @@ export default function Navbar() {
           </ul>
         </nav>
       </div>
+
+      {surprise && <SurpriseModal setSurprise={setSurprise} />}
     </div>
   )
 }
