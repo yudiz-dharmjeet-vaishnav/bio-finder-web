@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify';
 
 import Question from '@/src/shared/components/Common/Question'
+import HomePageBiosSkeleton from '../../Skeletons/HomePageBiosSkeleton';
+import HomePageQuestionsSkeleton from '../../Skeletons/HomePageQuestionsSkeleton';
 
 export default function Contant({questions}) {
   const [activeTab, setActiveTab] = useState(1)
-  const [biosData, setBiosData] = useState([])
+  const [biosData, setBiosData] = useState({})
 
   const theme = 'light'
 
@@ -35,6 +37,7 @@ export default function Contant({questions}) {
 
         {activeTab === 1 && (
           <div className='questions'>
+            {!questions.length && <HomePageQuestionsSkeleton count={5} />}
             {questions?.map((item, index) => 
               (
                 <Question key={index} question={item} homePage={true} />
@@ -47,6 +50,7 @@ export default function Contant({questions}) {
         {activeTab === 2 && (
           <div className='question-item'>
             <div className="question-content dark:bg-black">
+              {!biosData?.ans && <HomePageBiosSkeleton />}
               {biosData?.ans?.map((bio, index) => (
                 <div key={index} className='answer-bio flex justify-between items-center mb-2 bg-white p-8 rounded-lg' onClick={() => {
                   navigator.clipboard.writeText(bio?.aProfileFields?.sDisplayText)

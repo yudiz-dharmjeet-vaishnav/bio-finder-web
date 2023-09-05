@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 
 import BlackNewTabImg from '@/src/assets/images/new-tab-black.png'
+import QuestionPageSkeleton from '../../Skeletons/QuestionPageSkeleton';
 // import CopyIconBlack from '@/src/assets/images/copy.svg'
 // import Tooltip from './Tooltip';
 
@@ -36,7 +37,9 @@ export default function Question({ question, homePage }) {
 
   return (
     <div className="question">
-      <div className="question-item">
+      {!question 
+        ? <QuestionPageSkeleton />
+        : <div className="question-item">
         <div
           className="question-title dark:bg-black"
         >
@@ -68,6 +71,7 @@ export default function Question({ question, homePage }) {
           ))}
         </div>
       </div>
+      }
     </div>
   )
 }
