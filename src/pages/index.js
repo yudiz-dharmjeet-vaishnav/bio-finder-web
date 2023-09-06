@@ -1,16 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 
-import FilterBar from "@/src/shared/components/Home/FilterBar";
+// import FilterBar from "@/src/shared/components/Home/FilterBar";
 import SearchBar from "@/src/shared/components/Home/SearchBar";
 import Contant from "@/src/shared/components/Home/Contant";
 
 export default function Home({questions}) {
+  const [questionsData, setQuestionsData] = useState(questions)
+
   return (
     <div className="home">
       {/* <FilterBar /> */}
       <div className='container'>
-        <SearchBar />
-        <Contant questions={questions} />
+        <SearchBar setQuestionsData={setQuestionsData} />
+        <Contant questions={questionsData} />
       </div>
     </div>
   )
