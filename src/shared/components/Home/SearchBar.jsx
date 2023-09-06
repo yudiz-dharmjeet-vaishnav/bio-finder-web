@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-export default function SearchBar({ setQuestionsData }) {
+export default function SearchBar({ setQuestionsData, setBiosData, activeTab }) {
   const [searchText, setsearchText] = useState('')
 
   useEffect(() => {
-    if (searchText) {  
+    if (searchText && activeTab === 1) {  
       async function getSearchedQuestions () {
         const response = await fetch(`https://bio-finder-app.vercel.app/api/home?size=15&search=${searchText}`)
         const json = await response?.json()
@@ -41,7 +41,35 @@ export default function SearchBar({ setQuestionsData }) {
         clearTimeout(debouncer)
       }
     }
-  }, [searchText, setQuestionsData])
+
+    if (searchText && activeTab === 2) {  
+      async function getSearchedBios () {
+        const response = await fetch(`https://bio-finder-app.vercel.app/api/useinfo?pageNumber=1&type=aboutme_text&search=${searchText}`)
+        const json = await response.json()
+        setBiosData(json.data)
+      }
+
+      const debouncer = setTimeout(() => {
+        getSearchedBios()
+      }, 1000)
+      return () => {
+        clearTimeout(debouncer)
+      }
+    } else if (!searchText && activeTab === 2) {
+      async function getSearchedBios () {
+        const response = await fetch('https://bio-finder-app.vercel.app/api/useinfo?pageNumber=1&type=aboutme_text')
+        const json = await response.json()
+        setBiosData(json.data)
+      }
+
+      const debouncer = setTimeout(() => {
+        getSearchedBios()
+      }, 1000)
+      return () => {
+        clearTimeout(debouncer)
+      }
+    }
+  }, [searchText, setQuestionsData, setBiosData, activeTab])
 
   function handleChange (e) {
     setQuestionsData([])

@@ -6,13 +6,15 @@ import Contant from "@/src/shared/components/Home/Contant";
 
 export default function Home({questions}) {
   const [questionsData, setQuestionsData] = useState(questions)
+  const [biosData, setBiosData] = useState({})
+  const [activeTab, setActiveTab] = useState(1)
 
   return (
     <div className="home">
       {/* <FilterBar /> */}
       <div className='container'>
-        <SearchBar setQuestionsData={setQuestionsData} />
-        <Contant questions={questionsData} />
+        <SearchBar setQuestionsData={setQuestionsData} setBiosData={setBiosData} activeTab={activeTab} />
+        <Contant questions={questionsData} biosData={biosData} setBiosData={setBiosData} activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     </div>
   )

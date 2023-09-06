@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { toast } from 'react-toastify';
 
 import Question from '@/src/shared/components/Common/Question'
 import HomePageBiosSkeleton from '../../Skeletons/HomePageBiosSkeleton';
 import HomePageQuestionsSkeleton from '../../Skeletons/HomePageQuestionsSkeleton';
 
-export default function Contant({questions}) {
-  const [activeTab, setActiveTab] = useState(1)
-  const [biosData, setBiosData] = useState({})
-
+export default function Contant({questions, biosData, activeTab, setActiveTab}) {
   const theme = 'light'
-
-  useEffect(() => {
-    if (activeTab === 2) {
-      async function getBiosData () {
-        const response = await fetch('https://bio-finder-app.vercel.app/api/useinfo?pageNumber=1&type=aboutme_text')
-        const json = await response.json()
-        setBiosData(json.data)
-      }
-
-      getBiosData()
-    }
-  }, [activeTab])
 
   return (
     <div className='contant'>
